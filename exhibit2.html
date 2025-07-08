@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Book Review</title>
+  <title>wowow</title>
   <style>
     @font-face {
       font-family: 'EB Garamond';
@@ -147,11 +147,11 @@
 <body>
 
 <div class="container">
-  <div class="title">a little tribute to my books</div>
+  <div class="title">books i enjoyed recently :]</div>
 
   <div class="slider-wrapper">
     <div class="slider-block">
-      <!-- Progress bar -->
+
       <div class="progress" id="progress-bar">
         <div class="bar active"></div>
         <div class="bar"></div>
@@ -159,7 +159,7 @@
         <div class="bar"></div>
       </div>
 
-      <!-- Slider with arrows -->
+
       <div class="slider-container">
         <button class="arrow left" onclick="moveSlide(-1)">‹</button>
         <div class="slider" id="slider">
@@ -204,27 +204,24 @@
     const currentSlide = slides.children[currentIndex];
     const currentCaption = currentSlide.querySelector('.caption');
 
-    // Fade out current caption
     currentCaption.classList.add('fade-out');
 
     setTimeout(() => {
-      // Update index with looping
+
       currentIndex = (currentIndex + step + totalSlides) % totalSlides;
 
       slides.style.transform = `translateX(-${currentIndex * 300}px)`;
       updateProgressBar();
 
-      // Fade in new caption
       const newSlide = slides.children[currentIndex];
       const newCaption = newSlide.querySelector('.caption');
 
-      newCaption.classList.add('fade-out'); // Start hidden
-      void newCaption.offsetWidth; // Trigger reflow
+      newCaption.classList.add('fade-out');
+      void newCaption.offsetWidth; 
       newCaption.classList.remove('fade-out');
     }, 200);
   }
 
-  // Swipe support
   let startX = 0;
   let isSwiping = false;
   const slider = document.getElementById('slider');
@@ -247,7 +244,7 @@
     isSwiping = false;
   });
 
-  updateProgressBar(); // initial load
+  updateProgressBar();
 </script>
 
 </body>
