@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>wowow</title>
+  <style>
+    @font-face {
+      font-family: 'EB Garamond';
+      src: url('fonts/EBGaramond08-Regular.otf') format('opentype');
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: white;
+      font-family: 'EB Garamond', serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .title {
+      font-size: 28px;
+      width: 200px;
+      text-align: right;
+    }
+
+    .slider-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+
+    .slider-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      max-height: 500px;
+    }
+
+    .progress {
+      display: flex;
+      width: 300px;
+      height: 3px;
+      gap: 4px;
+      margin-bottom: 8px;
+    }
+
+    .bar {
+      flex: 1;
+      background-color: #ccc;
+      transition: background-color 0.3s ease;
+    }
+
+    .bar.active {
+      background-color: #333;
+    }
+
+    .slider-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .arrow {
+      font-size: 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      user-select: none;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 2;
+    }
+
+    .arrow.left {
+      left: -40px;
+    }
+
+    .arrow.right {
+      right: -40px;
+    }
+
+    .slider {
+      width: 300px;
+      overflow: hidden;
+      touch-action: pan-y;
+    }
+
+    .slides {
+      display: flex;
+      transition: transform 0.3s ease;
+    }
+
+    .slide {
+      min-width: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .slide img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+    }
+
+    .caption {
+      margin-top: 12px;
+      font-size: 14px;
+      color: #333;
+      text-align: left;
+      line-height: 1.4;
+      padding: 0 5px;
+      width: 100%;
+      opacity: 1;
+      transition: opacity 0.4s ease;
+    }
+
+    .caption.fade-out {
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="title">books i enjoyed recently :]</div>
+
+  <div class="slider-wrapper">
+    <div class="slider-block">
+
+      <div class="progress" id="progress-bar">
+        <div class="bar active"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+
+
+      <div class="slider-container">
+        <button class="arrow left" onclick="moveSlide(-1)">‹</button>
+        <div class="slider" id="slider">
+          <div class="slides" id="slides">
+            <div class="slide">
+              <img src="https://64.media.tumblr.com/3e939f4ed7f5a045bc07a6eb5783a04f/c91e8e3342530b46-ec/s2048x3072/c233effb02a53ed2007f8e25dbc0127947e005d2.jpg" alt="Post 1">
+              <div class="caption">A book that <i>shows</i> (mind you, it's different than just telling) a story about a lonely man and a longing lady. They met in the heavy pour. Gush of wind, emotions laid bare, visibly frail, and all. And soon, he finds that she may not be as pitiful as him.</div>
+            </div>
+            <div class="slide">
+              <img src="https://64.media.tumblr.com/ffeeecb21ad66865038ab9d64e9660b0/c91e8e3342530b46-5a/s2048x3072/fe33c1686882b8673322c0d8c92852b1e4888693.pnj" alt="Post 2">
+              <div class="caption">Language enthusiasts bonding over this would be so cute. It's interesting to grasp the ways of how a human grasps the nature of a language. It doesn't teach you how to, it just explains the process. Linguistics is a study not to be missed!</div>
+            </div>
+            <div class="slide">
+              <img src="https://64.media.tumblr.com/8b6095c0181f999ff0bc1ba2cd77a34a/c91e8e3342530b46-61/s2048x3072/c4cab9a5f775248d295f72919c0c4f5f5523f335.jpg" alt="Post 3">
+              <div class="caption">This is quite thick compared to the previous books. Intimidated me a bit. But this <i>is</i> the book to debunk the gastronomical lies. This is a long research project and the author's personality is visible in the writing itself. Would you dive into the world of nutritional science?</div>
+            </div>
+            <div class="slide">
+              <img src="https://64.media.tumblr.com/2377131afd4d9c0de97a2b93f0f446c5/c91e8e3342530b46-f4/s2048x3072/facdce45b1d8e816c9076ad5027128f89034710c.pnj" alt="Post 4">
+              <div class="caption">A compilation of letters between a writer who fell for his translator. Finding solace in eachother though only having met twice, they built a strong bond. This letter exchange is not "a stage" in their relationship. <i>This</i> is their relationship.</div>
+            </div>
+          </div>
+        </div>
+        <button class="arrow right" onclick="moveSlide(1)">›</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const slides = document.getElementById('slides');
+  const bars = document.querySelectorAll('.bar');
+  const totalSlides = bars.length;
+  let currentIndex = 0;
+
+  function updateProgressBar() {
+    bars.forEach((bar, i) => {
+      bar.classList.toggle('active', i === currentIndex);
+    });
+  }
+
+  function moveSlide(step) {
+    const currentSlide = slides.children[currentIndex];
+    const currentCaption = currentSlide.querySelector('.caption');
+
+    currentCaption.classList.add('fade-out');
+
+    setTimeout(() => {
+
+      currentIndex = (currentIndex + step + totalSlides) % totalSlides;
+
+      slides.style.transform = `translateX(-${currentIndex * 300}px)`;
+      updateProgressBar();
+
+      const newSlide = slides.children[currentIndex];
+      const newCaption = newSlide.querySelector('.caption');
+
+      newCaption.classList.add('fade-out');
+      void newCaption.offsetWidth; 
+      newCaption.classList.remove('fade-out');
+    }, 200);
+  }
+
+  let startX = 0;
+  let isSwiping = false;
+  const slider = document.getElementById('slider');
+
+  slider.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+    isSwiping = true;
+  });
+
+  slider.addEventListener('touchend', e => {
+    if (!isSwiping) return;
+    const endX = e.changedTouches[0].clientX;
+    const diff = endX - startX;
+
+    if (Math.abs(diff) > 50) {
+      if (diff < 0) moveSlide(1);
+      else moveSlide(-1);
+    }
+
+    isSwiping = false;
+  });
+
+  updateProgressBar();
+</script>
+
+</body>
+</html>
